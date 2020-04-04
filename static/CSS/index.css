@@ -1,0 +1,17 @@
+
+body {
+    background-image: url(/static/bgnevermoon_Tegnebrt_1.svg);
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  font-family: 'Roboto', sans-serif;
+}
+
+.nav {
+  background-color: black;
+  position: sticky;
+}
+
+.navbar-brand {
+  font-size: 1.8rem;
+}
+

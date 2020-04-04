@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block meta%}
+
+                
+{% endblock meta %}
+
+{% block main %}
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-12 mt-5 text-center">
+     <h1 class="text-white">NeverMoon</h1>
+     <p class="text-white">Towny, Custom terrain and quests!</p>
+     <object class="mt-1" height="300vh" type="image/svg+xml" data="{% static 'NeverMoon_Logo.svg' %}"></object>
+    </div>
+    <div class="col-12 text-center mt-3">
+<a class="text-white p-1" style="font-size: 1.25rem;">Forum</a>
+<a class="text-white p-1" style="font-size: 1.25rem;"">Shop</a>
+    </div>
+    <div class="col-12 text-center">
+        <a class="btn btn-primary mt-3 w-25" href="#" role="button">Play Now!</a>
+
+    </div>
+</div>
+  </div>
+  <div style="height: 200vh;"></div>
+{% endblock main %}
