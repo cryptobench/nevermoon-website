@@ -69,9 +69,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.template.context_processors.media',
             ],
-            'builtins': [
-                'django_hosts.templatetags.hosts_override',
-            ],
         },
     },
 ]
