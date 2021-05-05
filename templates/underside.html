@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta%}
+
+                
+{% endblock meta %}
+
+{% block main %}
+
+<div class="form-group" style="margin-top: 12%; float:right; position: relative; ">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <button  data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="btn btn-primary btn-lg  w-100" style="position: fixed; right: 0; bottom: 0; " id="btndisclaimer">Tilmeld dig til {{undermenu.titel}} 
+      
+    </button>
+
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tilmelding til Kurset</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="row g-3">
+          <div class="col-md-6">
+            <label for="Fornavn" class="form-label">Fornavn</label>
+            <input required type="name" class="form-control" id="Fornavn">
+          </div>
+          <div class="col-md-6">
+            <label for="Efternavn" class="form-label">Efternavn</label>
+            <input required type="name" class="form-control" id="Efternavn">
+          </div>
+          <div class="col-12">
+            <label for="Privatadresse" class="form-label">Privat - Adresse</label>
+            <input required type="text" class="form-control" id="Privatadressee" placeholder="Vejnavn, nummer, postnr og by">
+          </div>
+          <div class="col-12">
+            <label for="Arbejdeadresse" class="form-label">Adresse - Arbejde</label>
+            <input required type="text" class="form-control" id="Arbejdeadreesse" placeholder="Vejnavn, nummer, postnr og by">
+          </div>
+          <div class="col-md-12">
+            <label for="Email" class="form-label">E-mail</label>
+            <input required type="email" class="form-control" id="Email">
+          </div>
+          <div class="col-md-6">
+            <label for="Mobil" class="form-label">Mobil</label>
+            <input required type="phone" class="form-control" id="Mobil">
+          </div>
+          <div class="col-md-6">
+            <label for="EAN" class="form-label">EAN nr.</label>
+            <input required type="number" class="form-control" id="EAN">
+          </div>
+          <div class="col-12">
+            <div class="form-check">
+              <input required class="form-check-input" type="checkbox" id="vilkår">
+              <label class="form-check-label" for="vilkår">
+                Jeg accepterer de almene <a href="#">forretningsvilkår.</a>
+              </label>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-check">
+              <input required class="form-check-input" type="checkbox" id="kurset">
+              <label class="form-check-label" for="kurset">
+                Jeg tilmelder mig hermed bindende til kurset
+              </label>
+            </div>
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary w-100">Tilmeld</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container h-100">
+    <section class="container">
+        <div class="row py-4">
+
+          </div>
+          {% if undermenu.billede %}
+          <div class="row">
+            <div class="col-lg-8 mb-lg-5 mb-md-5">
+              {{undermenu.tekst|safe}}
+            </div>
+            <div class="col-lg-4 mb-5">
+              <img class="rounded" style="max-width: 100%;" src="{{undermenu.billede.url}}">
+            </div>
+          </div>
+          {% else %}
+          <div class="row mb-5">
+            <div class="col-lg-8 offset-lg-2">
+              {{undermenu.tekst|safe}}
+            </div>
+          {% endif %}
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+
+
+
+  </div>
+{% endblock main %}

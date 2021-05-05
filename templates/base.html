@@ -1,35 +1,63 @@
-{% load staticfiles %}
-<!DOCTYPE html>
+{% load static %}
+<!doctype html>
 <html lang="en">
     <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="{% static 'CSS/index.css' %}" />
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-          
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
            <meta charset="utf-8">  
 {% block meta %}
         {% endblock meta %}
     </head>
 <body >
-  <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
-    <a class="navbar-brand text-white ml-2" href="#"><object class="mt-1" height="110vh" type="image/svg+xml" data="{% static 'NeverMoon_Logo.svg' %}"></object></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon "></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link text-white" href="#">FORUM</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" href="#">SHOP</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" href="#">PLAY NOW</a>
-        </li>
-      </ul>
-      
+  <nav class="navbar navbar-expand-lg navbar-dark ">
+    
+    <div class="container">
+      <a class="navbar-brand theme-color" href="{% url 'index:index' %}">
+        <img style="margin-top: -5px;" src="{% static 'sproginwhite.png' %}" alt="" height="50" class="d-inline-block align-text-top">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'index' %} active{% endif %}" aria-current="page" href="{% url 'index:index' %}">Velkomstside</a>
+          </li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle {% if request.resolver_match.url_name == 'underside' %} active{% endif %}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Kurser og Certificeringer
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              {% for elem in navigation %}
+              <li><a class="dropdown-item " href="{% url 'index:underside' slug=elem.slug %}">{{elem.titel}}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'boeger' %} active{% endif %} " aria-current="page" href="{% url 'index:boeger' %}">Bøger og Artikler</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'plakater' %} active{% endif %} " aria-current="page" href="{% url 'index:plakater' %}">Plakater</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if 'omsprogin' in request.resolver_match.url_name %} active{% endif %}" aria-current="page" href="{% url 'index:omsprogin' %}">Om Sprogin</a>
+          </li>
+
+
+
+
+        </ul>
+
+      </div>
     </div>
   </nav>
 
@@ -38,9 +66,41 @@
         {% endblock main %}
     </main>
 
-  </footer>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <footer class="footer mt-auto py-3 ">
+      <div class="container h-100">
+        <section class="py-5 text-center container">
+            <div class="row py-lg-12">
+              <div class="col-lg-12 col-md-8 mx-auto">
+                <img src="{% static 'sproginhandwhite.png' %}" alt="" height="80" class="d-inline-block align-text-top mb-4">
+                </h1>
+                <p class="lead footer-color">Sprogin - CVR: 35360700 - Annebergvej 1, st., 2700 Brønshøj. - Tlf.: 41403927</p>
+                <div class="col-lg-12 col-md-12 d-flex justify-content-center">
+                <ul  >
+                  <li><a  href="#">Om Sprogin</a></li>
+                  <li class="footer-color"><a href="#">Forretningsvilkår</a></li>
+                  <li><a  href="#">Privatlivspolitik</a></li>
+                  <li><a  href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16">
+                    <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/>
+                  </svg>
+Youtube                  </a></li>
+<li><a  href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+  <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+</svg>
+Facebook                  </a></li>
+                </ul>
+              </div>
+              </div>
+            </div>
+          </section>
+        </div>
+    </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script>
+  AOS.init();
+</script>
 </body>
     </html>

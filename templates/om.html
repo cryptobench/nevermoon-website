@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta%}
+
+                
+{% endblock meta %}
+
+{% block main %}
+<div class="container h-100">
+    <section class="container">
+
+          <div class="row pt-5">
+            <div class="col-lg-2 pb-sm-5 pb-5">
+              <div class="list-group">
+                <a href="{% url 'index:omsprogin' %}" class="list-group-item list-group-item-action active" aria-current="true">
+                  Om Sprogin
+                </a>
+                {% for elem in about %}
+                <a href="{% url 'index:omsprogindetailed' slug=elem.slug %}" class="list-group-item list-group-item-action">{{elem.titel}}</a>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="col-lg-8">
+              {{om.tekst|safe}}
+            </div>
+            {% for elem in about %}
+            <div class="col-md-6 col-12 d-lg-none d-xl-block d-lg-block d-xl-none ">
+              
+              <img class="rounded" style="max-width: 100%;" src="{{elem.billede.url}}">
+              <p class="py-2"><a style="text-decoration: none; color: black;" href="{% url 'index:omsprogindetailed' slug=elem.slug %}">{{elem.titel}}</a></p>
+              
+            </div>
+            {% endfor %}
+            <div class="col-2 	d-none d-lg-block  d-xxl-block d-xl-block">
+              {% for elem in about %}
+              <img class="rounded" style="max-width: 100%;" src="{{elem.billede.url}}">
+              <p class="py-2"><a style="text-decoration: none; color: black;" href="{% url 'index:omsprogindetailed' slug=elem.slug %}">{{elem.titel}}</a></p>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="row mb-5">
+            <div class="col-lg-8 offset-lg-2">
+              {{undermenu.tekst|safe}}
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+
+
+
+  </div>
+{% endblock main %}
